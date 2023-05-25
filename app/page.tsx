@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <PageContainer>
       <div className="grid grid-cols-12">
-        <div className="col-span-9 p-4">
+        <div className="col-span-9 py-4">
           <div className="bg-secondary p-6 rounded-3xl h-[60vh]">
             Hi
           </div>

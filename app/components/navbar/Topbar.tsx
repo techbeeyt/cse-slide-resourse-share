@@ -13,7 +13,6 @@ const styles = {
 
 const Topbar = () => {
   const searchModal = useSearchModal();
-
   return (
     <div className={styles.appearance}>
       <div className='flex flex-row justify-start items-center gap-4'>

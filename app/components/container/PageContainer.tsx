@@ -8,7 +8,7 @@ const PageContainer: React.FC<PageContainerProps> = ({
   children
 }) => {
   return (
-    <div className='mt-[80px] ml-[100px]'>
+    <div className='pt-[80px] pl-[90px]'>
       {children}
     </div>
   )
