@@ -1,7 +1,5 @@
 "use client"
 import React from 'react';
-import UpcomingEvent from '../UpcomingEvent';
-import TodaysClass from '../TodaysClass';
 
 interface ContentContainerProps {
   title: string;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { driveDataType } from '@/app/types/driveResponseDataTypes';
 
-export async function getFolder(id: string | null): Promise<driveDataType[]> {
+export async function getFolder(id: string | null | undefined): Promise<driveDataType[]> {
   if(!id) {
     id = "root";
   }

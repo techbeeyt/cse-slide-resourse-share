@@ -1,3 +1,5 @@
+"use client";
+
 import useLeftbar from '@/app/hooks/useLeftBar';
 import React, { MouseEventHandler } from 'react';
 

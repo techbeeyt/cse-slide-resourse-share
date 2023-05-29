@@ -6,7 +6,7 @@ import ContentContainer from "./components/container/ContentContainer";
 import PageContainer from "./components/container/PageContainer";
 import PrimaryContainer from "./components/container/PrimaryContainer";
 
-export default function Home() {
+export default async function Home() {
   return (
     <PageContainer>
       <div className="grid grid-cols-12">

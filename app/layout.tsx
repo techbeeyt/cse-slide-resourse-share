@@ -1,9 +1,9 @@
-import ClientOnly from './components/ClientOnly'
 import Leftbar from './components/navbar/Leftbar'
 import Topbar from './components/navbar/Topbar'
 import SearchModal from './components/searchbar/SearchModal'
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter } from 'next/font/google';
+import NextAuthProvider from './providers/NextAuthProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,24 +20,23 @@ export const style = {
 
 
 export default async function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
-
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className='bg-primary min-h-screen text-white'>
-          <ClientOnly>
+        <NextAuthProvider>
+          <div className='bg-primary min-h-screen text-white'>
             <Topbar />
             <Leftbar />
             <SearchModal />
-          </ClientOnly>
-          <main>
-            {children}
-          </main>
-        </div>
+            <main>
+              {children}
+            </main>
+          </div>
+        </NextAuthProvider>
       </body>
     </html>
   )

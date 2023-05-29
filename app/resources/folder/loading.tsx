@@ -5,7 +5,7 @@ import PageContainer from '@/app/components/container/PageContainer';
 import PrimaryContainer from '@/app/components/container/PrimaryContainer';
 import Breadcumb from '@/app/components/breadcumb/Breadcumb';
 import { useSearchParams } from 'next/navigation';
-import FileCardSkeleton from '../components/fileCard/FileCardSkeleton';
+import FileCardSkeleton from '@/app/components/fileCard/FileCardSkeleton';
 
 const ResourceLoadingUI = () => {
   const params = useSearchParams();
@@ -17,7 +17,8 @@ const ResourceLoadingUI = () => {
     >
       <div className='my-2'>
         <Breadcumb
-          leaf="Root"
+          parents={[{ label: "Root", url: "/resources"}]}
+          leaf={name}
         />
       </div>
       <div className='grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8'>
