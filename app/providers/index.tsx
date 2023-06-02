@@ -2,13 +2,12 @@
 
 import React from 'react';
 import { SessionProvider } from 'next-auth/react';
-import { Session } from 'next-auth'
 
-interface NextAuthProviderProps {
+interface ProviderProps {
   children: React.ReactNode;
 }
 
-const NextAuthProvider: React.FC<NextAuthProviderProps> = ({
+const Providers: React.FC<ProviderProps> = ({
   children
 }) => {
   return (
@@ -18,4 +17,4 @@ const NextAuthProvider: React.FC<NextAuthProviderProps> = ({
   )
 }
 
-export default NextAuthProvider
+export default Providers;

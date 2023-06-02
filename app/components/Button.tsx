@@ -1,4 +1,6 @@
-import React from 'react';
+"use client"
+
+import React, { MouseEventHandler } from 'react';
 import { IconType } from 'react-icons';
 
 interface ButtonProps {
@@ -18,9 +20,12 @@ const Button: React.FC<ButtonProps> = ({
   iconColor,
   iconSize
 }) => {
+  const handleEvent: MouseEventHandler = () => {
+    onAction?.();
+  }
   return (
     <button
-      onClick={onAction}
+      onClick={handleEvent}
       className={`
         text-white
         px-4 

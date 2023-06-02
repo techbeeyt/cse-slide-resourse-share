@@ -3,7 +3,10 @@ import Topbar from './components/navbar/Topbar'
 import SearchModal from './components/searchbar/SearchModal'
 import './globals.css'
 import { Inter } from 'next/font/google';
-import NextAuthProvider from './providers/NextAuthProvider'
+import Providers from './providers';
+import getCurrentUser from '@/app/actions/getCurrentUser';
+import { redirect } from 'next/navigation';
+import AddNewEventModal from './components/modals/AddNewEventModal';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,25 +21,31 @@ export const style = {
   main: `h-screen overflow-auto pb-36 pt-4 px-2 md:pb-8 md:pt-4 lg:pt-0 lg:px-4`,
 };
 
-
 export default async function RootLayout({
   children
 }: {
   children: React.ReactNode
 }) {
+  const currentUser = await getCurrentUser();
+  if(!currentUser) {
+    return redirect('/api/auth/signin?callbackUrl=/');
+  }
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextAuthProvider>
+        <Providers>
           <div className='bg-primary min-h-screen text-white'>
-            <Topbar />
+            <Topbar
+              currentUser={currentUser}
+            />
             <Leftbar />
             <SearchModal />
+            <AddNewEventModal />
             <main>
               {children}
             </main>
           </div>
-        </NextAuthProvider>
+        </Providers>
       </body>
     </html>
   )

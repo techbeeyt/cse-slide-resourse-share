@@ -22,7 +22,6 @@ const PrimaryContainer: React.FC<PrimaryContainerProps> = ({
       <div 
         className={`
           flex justify-between items-center
-          ${divider ? "mb-1" : "mb-4"}
         `}
       >
         {
@@ -46,6 +45,7 @@ const PrimaryContainer: React.FC<PrimaryContainerProps> = ({
                 ${subtitleClickAction ? "text-sky-400" : "text-white/90"}
                 ${subtitleClickAction ? "cursor-pointer" : ""}
               `}
+              onClick={subtitleClickAction}
             >
               {subtitle}
             </h2>
@@ -55,7 +55,7 @@ const PrimaryContainer: React.FC<PrimaryContainerProps> = ({
       
       {
         divider ? (
-          <div className='h-px bg-gray-400/50 w-full mb-2'></div>
+          <div className='h-px bg-gray-400/50 w-full my-2'></div>
         ) : null
       }
       <div className='relative'>

@@ -1,12 +1,20 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { getEvents } from "./actions/getEvents";
 import TodaysClass from "./components/TodaysClass";
 import UpcomingEvent from "./components/UpcomingEvent";
 import ContentContainer from "./components/container/ContentContainer";
 import PageContainer from "./components/container/PageContainer";
 import PrimaryContainer from "./components/container/PrimaryContainer";
+import axios from "axios";
 
 export default async function Home() {
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    axios.get("/api/events")
+      .then((data) => console.log(data))
+  }, [])
   return (
     <PageContainer>
       <div className="grid grid-cols-12">
@@ -21,7 +29,17 @@ export default async function Home() {
               actionLabel="See all"
               action={() => {}}
             >
-              <UpcomingEvent />
+              <div className="flex justify-start items-center gap-3">
+                {
+                  events.map((item, index) => {
+                    return (
+                      <UpcomingEvent
+                        key={index}
+                      />
+                    );
+                  })
+                }
+              </div>
             </ContentContainer>
             <div className="bg-transparent w-full h-8"></div>
             <ContentContainer

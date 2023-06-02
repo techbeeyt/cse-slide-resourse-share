@@ -9,3 +9,7 @@
 .bg-secondary {
   @apply bg-[#1f2937];
 }
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}

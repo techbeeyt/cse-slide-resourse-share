@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { driveDataType } from '@/app/types/driveResponseDataTypes';
 
 type FileLinkType = {
   webViewLink: string

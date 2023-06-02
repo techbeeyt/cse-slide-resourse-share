@@ -11,8 +11,7 @@ import { FcFolder } from "react-icons/fc";
 export default async function FolderLayout({ children } : {
   children: React.ReactNode
 }) {
-  // @ts-ignore
-  const rootData: driveDataType[] = await getFolder(process.env.NEXT_PUBLIC_CURRENT_SEMESTER_FOLDER_ID);
+  const rootData: driveDataType[] = await getFolder(process.env.NEXT_PUBLIC_CURRENT_SEMESTER_FOLDER_ID as string);
   return (
     <PageContainer>
       <div className="pr-4">
