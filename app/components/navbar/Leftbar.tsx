@@ -30,7 +30,7 @@ const Leftbar = () => {
         left-0
         top-0
         h-screen
-        ${leftbar.isOpen ? 'w-[200px]' : 'w-[90px]'}
+        ${leftbar.isOpen ? 'w-[200px]' : 'w-[60px] md:w-[90px]'}
         flex
         flex-col
         justify-start
@@ -48,7 +48,7 @@ const Leftbar = () => {
             mt-6
             transition-all
             duration-200
-            ${leftbar.isOpen ? "translate-x-[30px]" : "translate-x-[20px]"}
+            ${leftbar.isOpen ? "translate-x-[30px]" : "translate-x-[17px] md:translate-x-[20px]"}
             flex flex-row justify-start items-center
             cursor-pointer
           `}>
@@ -61,6 +61,7 @@ const Leftbar = () => {
             ease-in
             overflow-hidden
             ${leftbar.isOpen ? "opacity-100" : "opacity-0"}
+            ${leftbar.isOpen ? "" : "pointer-events-none"}
             ${leftbar.isOpen ? "pl-10" : "pl-3"}
             whitespace-nowrap
             font-semibold
@@ -71,7 +72,7 @@ const Leftbar = () => {
         <ul className={`
           flex flex-col justify-start  gap-8
           ${leftbar.isOpen ? "items-start" : "items-center"}
-          translate-x-1/4
+          translate-x-[3px] md:translate-x-1/4
         `}>
           <li>
             <Link href="/">

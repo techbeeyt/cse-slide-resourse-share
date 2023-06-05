@@ -30,7 +30,7 @@ const LeftbarOverlay: React.FC<LeftbarOverlayProps> = ({
         bg-black/50 
         sm:bg-transparent 
         z-40
-        ${isOpen ? "w-full" : "w-[90px]"}
+        ${isOpen ? "w-full" : "w-[60px] md:w-[90px]"}
       `}
     >
       {children}

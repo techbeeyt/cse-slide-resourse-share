@@ -25,11 +25,16 @@ const Searchbar: React.FC<SearchbarProps> = ({
         items-center
         rounded-full
         group
-        p-1
+        p-0
+        md:p-1
         relative
         border
-        w-[200px]
-        border-gray-400
+        w-8
+        h-8
+        md:h-auto
+        md:w-[200px]
+        border-transparent
+        md:border-gray-400
         transition
         duration-150
       `}
@@ -40,7 +45,7 @@ const Searchbar: React.FC<SearchbarProps> = ({
       <div className='pl-2 pr-1 text-white/80 group-hover:text-white'>
         <BiSearchAlt2 size={20} />
       </div>
-      <input type="text" className='bg-transparent w-full p-1 pl-2 focus:outline-none border-l focus:border-gray-600 border-transparent' placeholder='Search' />
+      <input type="text" className='bg-transparent w-full p-1 pl-2 focus:outline-none border-l focus:border-gray-600 border-transparent hidden md:block' placeholder='Search' />
     </div>
   )
 }

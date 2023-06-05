@@ -1,23 +1,36 @@
 import React from 'react';
+import moment from 'moment'
 
-interface UpcomingEventProps {
-  data: any;
-  color?: string;
-
+type EventDataType = {
+  id: string;
+  title: string;
+  description?: string;
+  date: Date
+  time: Date
 }
 
-const UpcomingEvent = () => {
+interface UpcomingEventProps {
+  data: EventDataType;
+  index: number;
+}
+
+const colors = [ "bg-[#FFBFBF]", "bg-[#ECACD8]", "bg-[#C8ACEC]", "bg-[#51e4cb]", "bg-[#ECBEAC]", "bg-[#A4CDDC]", "bg-[A4DCB1]" ]
+
+const UpcomingEvent: React.FC<UpcomingEventProps> = ({
+  data,
+  index
+}) => {
   return (
-    <div className='bg-[#fee4cb] px-4 py-2 rounded-xl flex justify-start items-center gap-2 max-w-[350px]'>
+    <div className={`${colors[index % (colors.length - 1)]} px-4 py-2 rounded-xl flex justify-start items-center gap-2`}>
       <div className='text-black/90 flex flex-col justify-center items-center gap-0'>
-        <span className='text-lg font-bold'>16</span>
-        <span>June</span>
+        <span className='text-lg font-bold'>{moment(data.date).date()}</span>
+        <span>{moment(data.date).format('MMM')}</span>
       </div>
       <div className='h-12 w-px bg-gray-400 mx-2'></div>
       <div>
-        <h2 className='text-neutral-700/90 font-semibold'>CSE 3107 CT</h2>
-        <div className='text-neutral-700/90'>{"Description: Chap2, chap3, chap4, yusdgf, hubieruwg f, earsuighfb".slice(0, 50)}</div>
-        <div className='text-red-900 font-semibold'>3 days to go</div>
+        <h2 className='text-neutral-700/90 font-semibold'>{data.title}</h2>
+        <div className='text-neutral-700/90'>{data.description}</div>
+        <div className='text-red-900 font-semibold'>{moment(data.date).diff(moment(), 'days')} days to go</div>
       </div>
     </div>
   )

@@ -1,45 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getEvents } from "./actions/getEvents";
 import TodaysClass from "./components/TodaysClass";
-import UpcomingEvent from "./components/UpcomingEvent";
+import UpcomingEventList from "./components/UpcomingEventsList";
 import ContentContainer from "./components/container/ContentContainer";
 import PageContainer from "./components/container/PageContainer";
 import PrimaryContainer from "./components/container/PrimaryContainer";
-import axios from "axios";
 
 export default async function Home() {
-  const [events, setEvents] = useState([]);
-  useEffect(() => {
-    axios.get("/api/events")
-      .then((data) => console.log(data))
-  }, [])
   return (
     <PageContainer>
-      <div className="grid grid-cols-12">
-        <div className="col-span-9 py-4">
+      <div className="grid grid-cols-12 pr-4 md:pr-0">
+        <div className="col-span-12 md:col-span-9 py-4">
           <PrimaryContainer
             title="Home"
             largeTitle
             subtitle="Good Morning"
+            divider
           >
             <ContentContainer
               title="Upcoming Events"
               actionLabel="See all"
               action={() => {}}
             >
-              <div className="flex justify-start items-center gap-3">
-                {
-                  events.map((item, index) => {
-                    return (
-                      <UpcomingEvent
-                        key={index}
-                      />
-                    );
-                  })
-                }
-              </div>
+              <UpcomingEventList />
             </ContentContainer>
             <div className="bg-transparent w-full h-8"></div>
             <ContentContainer
@@ -53,7 +36,7 @@ export default async function Home() {
           </PrimaryContainer>
         </div>
 
-        <div className="col-span-3 p-4 relative">
+        <div className="col-span-0 md:col-span-3 hidden md:block p-4 relative">
           <PrimaryContainer
             title="Messages"
             divider

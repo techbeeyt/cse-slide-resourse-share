@@ -28,8 +28,10 @@ const Button: React.FC<ButtonProps> = ({
       onClick={handleEvent}
       className={`
         text-white
-        px-4 
-        py-2 
+        px-2
+        md:px-4
+        py-1
+        md:py-2 
         rounded-md
         flex justify-center items-center gap-2
         outline outline-2 outline-indigo-500

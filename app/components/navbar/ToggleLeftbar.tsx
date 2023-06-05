@@ -10,6 +10,7 @@ const ToggleLeftbar = () => {
   return (
     <div
       onClick={leftBar.onOpen}
+      className='cursor-pointer'
     >
       <IoMdMenu size={26} />
     </div>

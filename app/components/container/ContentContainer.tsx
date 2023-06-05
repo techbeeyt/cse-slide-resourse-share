@@ -14,9 +14,8 @@ const ContentContainer: React.FC<ContentContainerProps> = ({
   action,
   children
 }) => {
-  let contents = (<div>Some data</div>);  
   return (
-    <div className='flex flex-col justify-start items-start gap-2'>
+    <div className='flex flex-col justify-start items-start gap-2 w-full'>
       <div className='flex justify-between items-center w-full'>
         <h1 className='text-lg font-semibold text-white/90'>{title}</h1>
         <button
@@ -26,7 +25,7 @@ const ContentContainer: React.FC<ContentContainerProps> = ({
           {actionLabel}
         </button>
       </div>
-      <div>
+      <div className='w-full overflow-hidden'>
         {children}
       </div>
     </div>
