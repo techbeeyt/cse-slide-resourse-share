@@ -3,13 +3,14 @@
 import Button from '@/app/components/Button';
 import PrimaryContainer from '@/app/components/container/PrimaryContainer';
 import useAddNewEventModal from '@/app/hooks/useAddNewEventModal';
+import useAddNewRoutineModal from '@/app/hooks/useAddNewRoutineModal';
 import React from 'react';
 import { BsCalendarEvent, BsCalendarWeek } from 'react-icons/bs';
 import { HiPlus } from 'react-icons/hi';
 
 const AdminPanel = () => {
   const addEventModal = useAddNewEventModal();
-
+  const addRoutineModal = useAddNewRoutineModal();
   return (
     <div className="">
       <div className="p-4 flex justify-end items-center gap-3">
@@ -24,7 +25,7 @@ const AdminPanel = () => {
           icon={BsCalendarWeek}
           iconSize={20}
           label="Add New Routine"
-          onAction={() => alert("Hello")}
+          onAction={() => addRoutineModal.onOpen()}
         />
       </div>
       <div className="pr-4">

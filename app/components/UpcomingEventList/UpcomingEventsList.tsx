@@ -20,15 +20,20 @@ const UpcomingEventList = () => {
   }, [])
   if(isLoading) {
     return (
-      <div className="grid grid-cols-3 gap-4">
-        {
-          Array(3).fill(0).map((item, index) => {
-            return (
-              <UpcomingEventSkeleton index={index} key={index} />
-            );
-          })
-        }
-      </div>
+      <>
+        <div className="hidden md:grid grid-cols-3 gap-4">
+          {
+            Array(3).fill(0).map((item, index) => {
+              return (
+                <UpcomingEventSkeleton key={index} />
+              );
+            })
+          }
+        </div>
+        <div className='block md:hidden'>
+          <UpcomingEventSkeleton />
+        </div>
+      </>
     )
   }
   return (

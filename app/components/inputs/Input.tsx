@@ -70,6 +70,7 @@ const Input: React.FC<InputProps> = ({
           transition-all
           duration-100
           ease-out
+          pointer-events-none
         `}
       >
         {label}

@@ -1,14 +1,6 @@
 import React from 'react';
 
-interface UpcomingEventSkeletonProps {
-  index: number;
-}
-
-const colors = [ "bg-[#FFBFBF]", "bg-[#ECACD8]", "bg-[#C8ACEC]", "bg-[#51e4cb]", "bg-[#ECBEAC]", "bg-[#A4CDDC]", "bg-[A4DCB1]" ]
-
-const UpcomingEventSkeleton: React.FC<UpcomingEventSkeletonProps> = ({
-  index
-}) => {
+const UpcomingEventSkeleton = () => {
   return (
     <div className={`bg-gray-600 px-4 py-2 rounded-xl flex justify-start items-center gap-1 animate-pulse`}>
       <div className='flex flex-col justify-center items-center gap-1'>

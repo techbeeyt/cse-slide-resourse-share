@@ -75,3 +75,13 @@ model Event {
   date      DateTime
   time      DateTime
 }
+
+model ClassRoutine {
+  id            String     @id @default(cuid()) @map("_id")
+  course_title  String
+  start_time    DateTime
+  end_time      DateTime
+  day           Int
+  room_no       String
+  teacher_name  String
+}
