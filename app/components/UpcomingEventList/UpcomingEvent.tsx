@@ -20,6 +20,7 @@ const UpcomingEvent: React.FC<UpcomingEventProps> = ({
   data,
   index
 }) => {
+  const daysRemaining = moment(data.date).diff(moment(), 'days');
   return (
     <div className={`${colors[index % (colors.length - 1)]} px-4 py-2 rounded-xl flex justify-start items-center gap-2`}>
       <div className='text-black/90 flex flex-col justify-center items-center gap-0'>
@@ -30,7 +31,7 @@ const UpcomingEvent: React.FC<UpcomingEventProps> = ({
       <div>
         <h2 className='text-neutral-700/90 font-semibold'>{data.title}</h2>
         <div className='text-neutral-700/90'>{data.description}</div>
-        <div className='text-red-900 font-semibold'>{moment(data.date).diff(moment(), 'days')} days to go</div>
+        <div className='text-red-900 font-semibold'>{daysRemaining === 0 ? `Today, ${moment(data.time).format('hh:mm a')}` : `${daysRemaining} days to go`}</div>
       </div>
     </div>
   )

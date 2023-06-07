@@ -1,7 +1,7 @@
 "use client";
 
 import TodaysClass from "./components/TodaysClass";
-import UpcomingEventList from "./components/UpcomingEventsList";
+import UpcomingEventList from "./components/UpcomingEventList/UpcomingEventsList";
 import ContentContainer from "./components/container/ContentContainer";
 import PageContainer from "./components/container/PageContainer";
 import PrimaryContainer from "./components/container/PrimaryContainer";

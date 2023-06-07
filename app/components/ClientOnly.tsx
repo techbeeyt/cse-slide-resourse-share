@@ -19,9 +19,9 @@ const ClientOnly: React.FC<ClientOnlyProps> = ({
   }
 
   return (
-    <>
+    <div>
       {children}
-    </>
+    </div>
   )
 }
 

@@ -1,10 +1,9 @@
 import React from 'react'
-import PageContainer from '../components/container/PageContainer';
-import PrimaryContainer from '../components/container/PrimaryContainer';
+import PrimaryContainer from '@/app/components/container/PrimaryContainer';
 import { driveDataType } from '@/app/types/driveResponseDataTypes';
-import FileCard from '../components/fileCard/FileCard';
-import Breadcumb from '../components/breadcumb/Breadcumb';
-import { getFolder } from '../actions/getFolderById';
+import FileCard from '@/app/components/fileCard/FileCard';
+import Breadcumb from '@/app/components/breadcumb/Breadcumb';
+import { getFolder } from '@/app/actions/getFolderById';
 
 const Resources = async () => {
   const rootData: driveDataType[] = await getFolder(null);

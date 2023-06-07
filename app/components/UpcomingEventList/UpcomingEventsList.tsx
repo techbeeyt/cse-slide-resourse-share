@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import UpcomingEvent from '@/app/components/UpcomingEvent';
+import UpcomingEvent from '@/app/components/UpcomingEventList/UpcomingEvent';
+import UpcomingEventSkeleton from './UpcomingEventSkeleton';
 
 
 const UpcomingEventList = () => {
@@ -19,9 +20,15 @@ const UpcomingEventList = () => {
   }, [])
   if(isLoading) {
     return (
-      <>
-        We are loading tasks...
-      </>
+      <div className="grid grid-cols-3 gap-4">
+        {
+          Array(3).fill(0).map((item, index) => {
+            return (
+              <UpcomingEventSkeleton index={index} key={index} />
+            );
+          })
+        }
+      </div>
     )
   }
   return (

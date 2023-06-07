@@ -1,11 +1,10 @@
 "use client";
 
 import React from 'react'
-import PageContainer from '@/app/components/container/PageContainer';
 import PrimaryContainer from '@/app/components/container/PrimaryContainer';
 import Breadcumb from '@/app/components/breadcumb/Breadcumb';
 import { useSearchParams } from 'next/navigation';
-import FileCardSkeleton from '../components/fileCard/FileCardSkeleton';
+import FileCardSkeleton from '@/app/components/fileCard/FileCardSkeleton';
 
 const ResourceLoadingUI = () => {
   const params = useSearchParams();

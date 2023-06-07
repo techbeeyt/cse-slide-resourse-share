@@ -12,6 +12,7 @@ export default async function FolderLayout({ children } : {
   children: React.ReactNode
 }) {
   const rootData: driveDataType[] = await getFolder(process.env.NEXT_PUBLIC_CURRENT_SEMESTER_FOLDER_ID as string);
+  console.log(rootData);
   return (
     <PageContainer>
       <div className="pr-4">
