@@ -13,6 +13,8 @@ export async function GET() {
     }
   });
 
+  console.log(events);
+
   return NextResponse.json([
     ...events
   ])
