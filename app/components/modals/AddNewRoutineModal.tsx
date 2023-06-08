@@ -5,7 +5,6 @@ import ModalContainer from '../container/ModalContainer';
 import axios from 'axios';
 import PrimaryContainer from '../container/PrimaryContainer';
 import Button from '@/app/components/Button';
-import TextArea from '../inputs/TextArea';
 import Input from '@/app/components/inputs/Input';
 import {
   FieldValues,
@@ -33,7 +32,7 @@ const AddNewRoutineModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
-    axios.post("/api/events/add", data)
+    axios.post("/api/routine/add", data)
       .then(() => alert("Added new routine"))
   }
   const modal = useAddNewRoutineModal();
@@ -109,7 +108,14 @@ const AddNewRoutineModal = () => {
                 required
               />
 
-              <DropDownSelect options={WeekDays} />
+              <DropDownSelect
+                options={WeekDays}
+                id='day'
+                label='Select Day'
+                register={register}
+                errors={errors}
+                required
+              />
 
               <Input
                 id='teacher_name'
@@ -121,7 +127,7 @@ const AddNewRoutineModal = () => {
               />
 
               <Input
-                id='room_no'
+                id='room'
                 inputType='text'
                 label="Room No"
                 register={register}

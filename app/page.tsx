@@ -1,6 +1,7 @@
 "use client";
 
 import TodaysClass from "./components/TodaysClass";
+import TodaysClassList from "./components/TodaysClassList/TodaysClassList";
 import UpcomingEventList from "./components/UpcomingEventList/UpcomingEventsList";
 import ContentContainer from "./components/container/ContentContainer";
 import PageContainer from "./components/container/PageContainer";
@@ -30,7 +31,7 @@ export default async function Home() {
               actionLabel="See all"
               action={() => {}}
             >
-              <TodaysClass />
+              Hello World
             </ContentContainer>
           
           </PrimaryContainer>

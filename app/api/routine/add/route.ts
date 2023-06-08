@@ -16,10 +16,12 @@ export async function POST(
   console.log(body);
 
   const {
-    title,
-    description,
-    date,
-    time
+    course_title,
+    start_time,
+    end_time,
+    teacher_name,
+    room,
+    day
   } = body;
 
   Object.keys(body).forEach((value: any) => {
@@ -28,12 +30,14 @@ export async function POST(
     }
   });
 
-  const event = await prisma.event.create({
+  const event = await prisma.classRoutine.create({
     data: {
-      title,
-      description,
-      date: new Date(date),
-      time: new Date("1970-01-01T" + time)
+      course_title,
+      start_time: new Date("1970-01-01T" + start_time),
+      end_time: new Date("1970-01-01T" + end_time),
+      teacher_name,
+      room_no: room,
+      day: parseInt(day)
     }
   })
 
@@ -43,5 +47,4 @@ export async function POST(
     status: true,
     message: "Event added successfully"
   })
-
 }

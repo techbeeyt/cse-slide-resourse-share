@@ -1,4 +1,5 @@
 import React from 'react';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
 type OptionDataType = {
   label: string;
@@ -6,11 +7,23 @@ type OptionDataType = {
 }
 
 interface DropDownSelectProps {
-  options: OptionDataType[]
+  options: OptionDataType[];
+  id: string;
+  label?: string;
+  disabled?: boolean;
+  required?: boolean;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors
 }
 
 const DropDownSelect: React.FC<DropDownSelectProps> = ({
-  options
+  options,
+  id,
+  label,
+  disabled,
+  required,
+  register,
+  errors,
 }) => {
   return (
     <select className={`
@@ -27,10 +40,13 @@ const DropDownSelect: React.FC<DropDownSelectProps> = ({
       focus:placeholder-opacity-30
       focus:placeholder-white/70
       focus:bg-gray-500/50
-      ${false ? "border-rose-600" : "border-neutral-700/0"}
+      ${errors[id] ? "border-rose-600" : "border-neutral-700/0"}
       focus:backdrop-blur-md
     `}
+      {...register(id, { required })}
+      disabled={disabled}
     >
+      <option value="">{label}</option>
       {
         options.map((item, index) => {
           return (
