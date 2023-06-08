@@ -12,12 +12,20 @@ const UpcomingEventList = () => {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    axios.get("/api/events")
-      .then((response) => {
-        setEvents(response.data);
-        console.log(response.data);
+    // axios.get("/api/events")
+    //   .then((response) => {
+    //     setEvents(response.data);
+    //     console.log(response.data);
+    //     setIsLoading(false);
+    //   })
+    fetch("/api/events", { cache: "no-store"})
+      .then((response) => response.json())
+      .then((data) => {
+        setEvents(data);
         setIsLoading(false);
-      })
+      }
+      )
+
   }, [])
   if(isLoading) {
     return (
