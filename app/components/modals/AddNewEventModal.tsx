@@ -41,8 +41,8 @@ const AddNewEventModal = () => {
     <ModalContainer
       onClose={() => {}}
     >
-      <div className='mt-8 flex justify-center items-center'>
-        <div className='bg-secondary rounded-3xl p-4 w-[500px]'>
+      <div className='w-full h-full flex justify-center items-center'>
+        <div className='bg-secondary rounded-sm md:rounded-3xl p-4 w-[500px]'>
           <PrimaryContainer
             title='Add New Event'
             divider

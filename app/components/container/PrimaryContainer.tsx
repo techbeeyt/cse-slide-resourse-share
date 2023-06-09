@@ -30,8 +30,8 @@ const PrimaryContainer: React.FC<PrimaryContainerProps> = ({
           title ? (
             <h1
               className={`
-                ${largeTitle ? "text-2xl" : "text-lg"}
-                font-bold
+                ${largeTitle ? "text-xl mb:text-2xl" : "text-base md:text-lg"}
+                ${largeTitle ? "font-bold" : "font-semibold"}
                 text-sky-200/80
               `}
             >

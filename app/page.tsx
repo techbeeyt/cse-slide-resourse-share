@@ -1,14 +1,17 @@
 import { getEvents } from "./actions/getEvents";
+import { getRoutines } from "./actions/getRoutine";
+import TodaysClassList from "./components/TodaysClassList/TodaysClassList";
 import UpcomingEventList from "./components/UpcomingEventList/UpcomingEventsList";
-import ContentContainer from "./components/container/ContentContainer";
 import PageContainer from "./components/container/PageContainer";
 import PrimaryContainer from "./components/container/PrimaryContainer";
 
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const events = await getEvents();
-  console.log(events);
+  const eventData = getEvents();
+  const routineData = getRoutines();
+
+  const [events, routines] = await Promise.all([eventData, routineData]);
   return (
     <PageContainer>
       <div className="grid grid-cols-12 pr-4 md:pr-0">
@@ -19,51 +22,9 @@ export default async function Home() {
             subtitle="Good Morning"
             divider
           >
-            <ContentContainer
-              title="Upcoming Events"
-              actionLabel="See all"
-            >
-              <UpcomingEventList events={events} />
-            </ContentContainer>
+            <UpcomingEventList events={events} />
             <div className="bg-transparent w-full h-8"></div>
-            <ContentContainer
-              title="Today's Classes"
-              actionLabel="See all"
-            >
-              {
-                events.map((item: any, index: number) => {
-                  return (
-                    <div key={index} className="bg-white rounded-lg shadow-md p-4 mb-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          
-                          <div className="flex flex-col ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              {item.title}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {item.description}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex items-center">
-                          <div className="flex flex-col ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              {item.title}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {item.description}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })  
-
-              }
-            </ContentContainer>
-          
+            <TodaysClassList routines={routines} />
           </PrimaryContainer>
         </div>
 

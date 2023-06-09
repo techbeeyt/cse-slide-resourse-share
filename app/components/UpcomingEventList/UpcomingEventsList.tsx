@@ -7,6 +7,7 @@ import UpcomingEvent from '@/app/components/UpcomingEventList/UpcomingEvent';
 
 import "swiper/css";
 import "swiper/css/pagination";
+import ContentContainer from '../container/ContentContainer';
 
 
 interface UpcomingEventListProps {
@@ -18,13 +19,21 @@ const UpcomingEventList: React.FC<UpcomingEventListProps> = ({
 }) => {
   if(events.length === 0) {
     return (
-      <div className='flex justify-center items-center w-full h-full'>
-        <div className='text-2xl font-semibold text-neutral-700'>No events found</div>
-      </div>
+      <ContentContainer
+        title="Upcoming Events"
+        actionLabel="See all"
+      >
+        <div className='flex justify-center mb:justify-start items-center w-full h-full'>
+          <div className='text-neutral-400 italic'>No events found</div>
+        </div>
+      </ContentContainer>
     );
   }
   return (
-    <>
+    <ContentContainer
+      title="Upcoming Events"
+      actionLabel="See all"
+    >
       <Swiper
         modules={[Pagination]}
         pagination={{ clickable: true }}
@@ -61,7 +70,7 @@ const UpcomingEventList: React.FC<UpcomingEventListProps> = ({
           })
         }
       </Swiper>
-    </>
+    </ContentContainer>
   )
 }
 
