@@ -18,7 +18,7 @@ const UpcomingEventList = () => {
     //     console.log(response.data);
     //     setIsLoading(false);
     //   })
-    fetch("/api/events", { cache: "no-store"})
+    fetch("/api/events", { next: { revalidate: 0 } })
       .then((response) => response.json())
       .then((data) => {
         setEvents(data);
