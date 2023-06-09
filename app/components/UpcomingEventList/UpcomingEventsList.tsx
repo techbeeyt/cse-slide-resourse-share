@@ -1,32 +1,21 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import UpcomingEvent from '@/app/components/UpcomingEventList/UpcomingEvent';
 import UpcomingEventSkeleton from './UpcomingEventSkeleton';
+import useSWR from 'swr';
 
+const fetcher = async () => {
+  const res = await fetch('/api/events', { cache: 'no-store' });
+  const data = await res.json();
+  return data;
+}
 
 const UpcomingEventList = () => {
-  const [events, setEvents] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    // axios.get("/api/events")
-    //   .then((response) => {
-    //     setEvents(response.data);
-    //     console.log(response.data);
-    //     setIsLoading(false);
-    //   })
-    fetch("/api/events", { next: { revalidate: 0 } })
-      .then((response) => response.json())
-      .then((data) => {
-        setEvents(data);
-        setIsLoading(false);
-      }
-      )
+  const { data, error, isLoading } = useSWR('/api/events', fetcher);
 
-  }, [])
   if(isLoading) {
     return (
       <>
@@ -45,6 +34,7 @@ const UpcomingEventList = () => {
       </>
     )
   }
+  
   return (
     <>
       <Swiper
@@ -67,7 +57,7 @@ const UpcomingEventList = () => {
         }
       >
         {
-          events.map((item, index) => {
+          data.map((item: any, index: number) => {
             return (
               <SwiperSlide
                 key={index}
