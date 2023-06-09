@@ -22,7 +22,7 @@ const UpcomingEvent: React.FC<UpcomingEventProps> = ({
 }) => {
   const daysRemaining = moment(data.date).diff(moment(), 'days');
   return (
-    <div className={`${colors[index % (colors.length - 1)]} px-4 py-2 rounded-xl flex justify-start items-center gap-2`}>
+    <div className={`${colors[index % (colors.length - 1)]} px-4 py-2 rounded-xl flex justify-start items-center gap-2 max-w-[350px]`}>
       <div className='text-black/90 flex flex-col justify-center items-center gap-0'>
         <span className='text-lg font-bold'>{moment(data.date).date()}</span>
         <span>{moment(data.date).format('MMM')}</span>

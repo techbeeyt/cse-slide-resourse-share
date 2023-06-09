@@ -14,6 +14,7 @@ export async function GET() {
   });
 
   console.log(events);
+  console.log("logged in api/events/route.ts");
 
   return NextResponse.json([
     ...events
