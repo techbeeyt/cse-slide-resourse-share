@@ -1,9 +1,12 @@
 "use client";
 
 import React from 'react';
+import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import UpcomingEvent from '@/app/components/UpcomingEventList/UpcomingEvent';
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 
 interface UpcomingEventListProps {
@@ -13,9 +16,18 @@ interface UpcomingEventListProps {
 const UpcomingEventList: React.FC<UpcomingEventListProps> = ({
   events
 }) => {
+  if(events.length === 0) {
+    return (
+      <div className='flex justify-center items-center w-full h-full'>
+        <div className='text-2xl font-semibold text-neutral-700'>No events found</div>
+      </div>
+    );
+  }
   return (
     <>
       <Swiper
+        modules={[Pagination]}
+        pagination={{ clickable: true }}
         className='mySwiper'
         breakpoints={
           {
