@@ -1,13 +1,9 @@
+"use client";
+
 import React from 'react';
 import moment from 'moment'
-
-type EventDataType = {
-  id: string;
-  title: string;
-  description?: string;
-  date: Date
-  time: Date
-}
+import useEventDetailsModal from '@/app/hooks/useEventDetailsModal';
+import { EventDataType } from '@/app/types';
 
 interface UpcomingEventProps {
   data: EventDataType;
@@ -20,9 +16,25 @@ const UpcomingEvent: React.FC<UpcomingEventProps> = ({
   data,
   index
 }) => {
+  const eventDetailModal = useEventDetailsModal();
   const daysRemaining = moment(data.date).diff(moment(), 'days');
   return (
-    <div className={`${colors[index % (colors.length - 1)]} px-4 py-2 rounded-xl flex justify-start items-center gap-2 max-w-[350px] min-h-[150px]`}>
+    <div
+      onClick={() => {
+        eventDetailModal.onOpen(data.id);
+      }}
+      className={`
+        ${colors[index % (colors.length - 1)]}
+        px-4 py-2 rounded-xl 
+        flex justify-start items-center 
+        gap-2 
+        max-w-[350px] min-h-[150px]
+        cursor-pointer
+        transition-all
+        duration-100
+        active:scale-95
+      `}
+    >
       <div className='text-black/90 flex flex-col justify-center items-center gap-0'>
         <span className='text-lg font-bold'>{moment(data.date).date()}</span>
         <span>{moment(data.date).format('MMM')}</span>

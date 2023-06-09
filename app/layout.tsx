@@ -8,6 +8,7 @@ import getCurrentUser from '@/app/actions/getCurrentUser';
 import { redirect } from 'next/navigation';
 import AddNewEventModal from './components/modals/AddNewEventModal';
 import AddNewRoutineModal from './components/modals/AddNewRoutineModal';
+import EventDetailsModal from './components/modals/EventDetailsModal';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -43,6 +44,7 @@ export default async function RootLayout({
             <SearchModal />
             <AddNewEventModal />
             <AddNewRoutineModal />
+            <EventDetailsModal /> 
             <main>
               {children}
             </main>
