@@ -1,3 +1,4 @@
+import moment from "moment";
 import { getEvents } from "./actions/getEvents";
 import { getRoutines } from "./actions/getRoutine";
 import TodaysClassList from "./components/TodaysClassList/TodaysClassList";
@@ -12,6 +13,7 @@ export default async function Home() {
   const routineData = getRoutines();
 
   const [events, routines] = await Promise.all([eventData, routineData]);
+  const time = moment().format('DD MMM, YYYY');
   return (
     <PageContainer>
       <div className="grid grid-cols-12 pr-4 md:pr-0">
@@ -19,7 +21,7 @@ export default async function Home() {
           <PrimaryContainer
             title="Home"
             largeTitle
-            subtitle="Good Morning"
+            subtitle={time}
             divider
           >
             <UpcomingEventList events={events} />

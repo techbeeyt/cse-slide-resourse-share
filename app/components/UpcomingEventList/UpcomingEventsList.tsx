@@ -51,6 +51,10 @@ const UpcomingEventList: React.FC<UpcomingEventListProps> = ({
             1024: {
               slidesPerView: 3,
               spaceBetween: 15
+            },
+            1440: {
+              slidesPerView: 4,
+              spaceBetween: 15
             }
           }
         }
