@@ -12,12 +12,11 @@ export default async function FolderLayout({ children } : {
   children: React.ReactNode
 }) {
   const rootData: drive_v3.Schema$FileList = await getFolder(process.env.NEXT_PUBLIC_CURRENT_SEMESTER_FOLDER_ID as string);
-  console.log(rootData);
   return (
     <PageContainer>
       <div className="pr-4">
         <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-3  relative">
+          <div className="col-span-12 md:col-span-3 relative hidden md:block">
             <div className="sticky top-[80px] left-0">
               <PrimaryContainer
                 title="Current Semester"
@@ -39,7 +38,7 @@ export default async function FolderLayout({ children } : {
                             hover:rounded-sm
                           "
                         >
-                          <FcFolder size={22} />
+                          <FcFolder size={36} />
                           <span>{item.name}</span>
                         </Link>
                       );
@@ -50,7 +49,7 @@ export default async function FolderLayout({ children } : {
             </div>
           </div>
 
-          <div className="col-span-9">
+          <div className="col-span-12 md:col-span-9">
             {children}
           </div>
         </div>

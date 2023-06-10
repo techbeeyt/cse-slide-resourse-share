@@ -24,6 +24,7 @@ const PrimaryContainer: React.FC<PrimaryContainerProps> = ({
       <div 
         className={`
           flex justify-between items-center
+          ${divider ? "" : "mb-3"}
         `}
       >
         {
