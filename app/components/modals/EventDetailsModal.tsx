@@ -1,29 +1,33 @@
 "use client";
 
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import ModalContainer from '../container/ModalContainer'
 import useEventDetailsModal from '@/app/hooks/useEventDetailsModal';
 import PrimaryContainer from '../container/PrimaryContainer';
 import useSWR from 'swr';
+import moment from 'moment'
 
 const fetcher = (url: string) => fetch(url, { cache: 'no-store' }).then((res) => res.json());
 
 const EventDetailsModal = () => {
   const modal = useEventDetailsModal();
   const { data, isLoading } = useSWR(`/api/events/${modal.eventId}`, fetcher);
-  const da = JSON.stringify(data);
+
+  const handleEventDelegation: MouseEventHandler<HTMLDivElement> = (e) => {
+    if(e.target === e.currentTarget) {
+      modal.onClose();
+    }
+  }
 
   if (!modal.isOpen) return null;
   return (
     <ModalContainer
-      onClose={modal.onClose}
+      onClose={handleEventDelegation}
+      center
     >
-      <div className='w-full h-full flex justify-center items-center'>
-        <div className='bg-secondary rounded-sm md:rounded-3xl p-4 w-[500px]'>
+      <div className='bg-secondary rounded-xl md:rounded-3xl w-[90vw] md:w-[500px] lg:w-[700px] -translate-y-[100px]'>
         <PrimaryContainer
-            title='Event Title'
-            divider
-            largeTitle
+            title={data?.title as string}
             subtitle='Close'
             subtitleClickAction={modal.onClose}
           >
@@ -33,18 +37,28 @@ const EventDetailsModal = () => {
                   <div className='text-neutral-400 italic'>Loading...</div>
                 </div>
               ) : (
-                <div className='flex justify-center items-center w-full h-full'>
-                  <div className='text-neutral-400 italic'>
-                    {
-                      da
-                    }
-                  </div>
+                <div className='flex flex-col justify-start items-start w-full h-full'>
+                    <div className="bg-gray-500/50 px-4 py-2 rounded-md w-full">
+                      <div className="font-semibold text-gray-200">Description:</div> 
+                      <div className="text-gray-300">
+                        {data?.description}
+                      </div>
+                      <div className="text-gray-400 italic">
+                        -at {moment(data.time).format('hh:mm a')} on {moment(data.date).format("DD MMM")} 
+                      </div>
+                    </div>
+                    <div className="bg-gradient-to-t from-neutral-900/40 to-neutral-800/40 min-h-[100px] w-full mt-4 rounded-t-xl p-3">
+                      <span className="text-gray-400">Discussion System Will be added soon..</span>
+                    </div>
+                    <div className="w-full">
+                      <div className="bg-gradient-to-tr from-purple-600 to-pink-500 text-white w-full text-center rounded-b-xl px-4 py-1.5 text-white/80">Start Discussion</div>
+                    </div>
+                    
                 </div>
               )
             }
           </PrimaryContainer>
         </div>
-      </div>
     </ModalContainer>
   )
 }

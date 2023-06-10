@@ -10,6 +10,10 @@ const SearchModal = () => {
   if(!searchModal.isOpen) return null;
 
   const handleEventDelegation: MouseEventHandler<HTMLDivElement> = (e) => {
+    console.log("e.target");
+    console.log(e.target);
+    console.log("e.currentTarget");
+    console.log(e.currentTarget);
     if(e.target === e.currentTarget) {
       searchModal.onClose();
     }

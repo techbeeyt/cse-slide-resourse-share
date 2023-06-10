@@ -29,7 +29,7 @@ const UpcomingEvent: React.FC<UpcomingEventProps> = ({
         flex justify-start items-center 
         gap-2 
         w-full md:w-auto
-        min-h-[150px]
+        min-h-[130px]
         cursor-pointer
         transition-all
         duration-100
@@ -41,10 +41,10 @@ const UpcomingEvent: React.FC<UpcomingEventProps> = ({
         <span>{moment(data.date).format('MMM')}</span>
       </div>
       <div className='h-20 w-px bg-gray-400 mx-2'></div>
-      <div>
+      <div className="flex flex-col justify-between items-start h-[120px] md:h-[100px]">
         <h2 className='text-neutral-700/90 font-semibold'>{data.title}</h2>
         <div className='text-neutral-700/90'>{data.description?.substring(0, 55)}{data.description && (data.description?.length > 55) ? "..." : ''}</div>
-        <div className='text-red-900 font-semibold'>{daysRemaining === 0 ? `Today, ${moment(data.time).format('hh:mm a')}` : `${daysRemaining} days to go`}</div>
+        <div className='text-red-900 font-normal md:font-semibold mt-auto'>{daysRemaining === 0 ? `Today, ${moment(data.time).format('hh:mm a')}` : `${daysRemaining} days to go`}</div>
       </div>
     </div>
   )

@@ -3,24 +3,23 @@ import React, { MouseEventHandler } from 'react';
 interface ModalContainerProps {
   children: React.ReactNode;
   onClose?: MouseEventHandler<HTMLDivElement>;
+  center?: boolean;
 }
 
 const ModalContainer: React.FC<ModalContainerProps> = ({
   children,
-  onClose
+  onClose,
+  center
 }) => {
-  const handleClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if(e.target === e.currentTarget.children[0]) {
-      onClose?.(e);
-    }
-  }
+
   return (
     <div
       id="modalContainer"
-      className='
+      className={`
         fixed inset-0 bg-black/60 z-50
-      '
-      onClick={handleClose}
+        ${center ? 'flex justify-center items-center' : 'flex justify-start items-start'}
+      `}
+      onClick={onClose ? onClose : undefined}
     >
       {children}
     </div>
