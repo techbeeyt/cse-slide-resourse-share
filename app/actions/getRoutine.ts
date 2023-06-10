@@ -1,4 +1,5 @@
 import prisma from "@/app/libs/prismadb";
+import moment from 'moment-timezone';
 
 export async function getRoutines() {
   return await prisma.classRoutine.findMany({
@@ -7,7 +8,7 @@ export async function getRoutines() {
     },
     where: {
       day: {
-        equals: new Date().getDay()
+        equals: moment().tz('Asia/Dhaka').get('day')
       }
     }
   });

@@ -28,7 +28,7 @@ const UpcomingEvent: React.FC<UpcomingEventProps> = ({
         px-4 py-2 rounded-xl 
         flex justify-start items-center 
         gap-2 
-        w-full md:max-w-[350px]
+        w-full md:w-auto
         min-h-[150px]
         cursor-pointer
         transition-all

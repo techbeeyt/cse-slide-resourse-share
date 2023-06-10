@@ -1,7 +1,7 @@
 import { getFolder } from "@/app/actions/getFolderById";
 import PageContainer from "@/app/components/container/PageContainer";
 import PrimaryContainer from "@/app/components/container/PrimaryContainer";
-import { driveDataType } from "@/app/types/driveResponseDataTypes";
+import { drive_v3 } from "googleapis";
 import Link from "next/link";
 import React from "react";
 import { FcFolder } from "react-icons/fc";
@@ -11,7 +11,8 @@ import { FcFolder } from "react-icons/fc";
 export default async function FolderLayout({ children } : {
   children: React.ReactNode
 }) {
-  const rootData: driveDataType[] = await getFolder(process.env.NEXT_PUBLIC_CURRENT_SEMESTER_FOLDER_ID as string);
+  const rootData: drive_v3.Schema$FileList = await getFolder(process.env.NEXT_PUBLIC_CURRENT_SEMESTER_FOLDER_ID as string);
+  console.log(rootData);
   return (
     <PageContainer>
       <div className="pr-4">
@@ -24,7 +25,7 @@ export default async function FolderLayout({ children } : {
               >
                 <div className="w-full flex flex-col justify-start items-start">
                   {
-                    rootData.map((item, index) => {
+                    rootData.files?.map((item, index) => {
                       if(item.mimeType !== 'application/vnd.google-apps.folder') {
                         return null;
                       }

@@ -12,11 +12,11 @@ const EventDetailsModal = () => {
   const modal = useEventDetailsModal();
   const { data, isLoading } = useSWR(`/api/events/${modal.eventId}`, fetcher);
   const da = JSON.stringify(data);
-  console.log(da);
+
   if (!modal.isOpen) return null;
   return (
     <ModalContainer
-      onClose={() => {}}
+      onClose={modal.onClose}
     >
       <div className='w-full h-full flex justify-center items-center'>
         <div className='bg-secondary rounded-sm md:rounded-3xl p-4 w-[500px]'>

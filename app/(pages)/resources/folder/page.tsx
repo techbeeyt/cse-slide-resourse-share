@@ -1,17 +1,20 @@
-"use client";
-
 import { getFolder } from '@/app/actions/getFolderById';
 import { useSearchParams } from 'next/navigation';
 import React from 'react';
 import PrimaryContainer from '@/app/components/container/PrimaryContainer';
 import Breadcumb from '@/app/components/breadcumb/Breadcumb';
 import FileCard from '@/app/components/fileCard/FileCard';
+import { drive_v3 } from 'googleapis';
 
-const FolderPage = async () => {
-  const params = useSearchParams();
-  const id = params.get("id");
-  const folderData = await getFolder(id);
-  const name = params.get("name");
+const FolderPage = async ({
+  params,
+  searchParams
+} : {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) => {
+  const folderData: drive_v3.Schema$FileList = await getFolder(searchParams?.id as string);
+  const name = searchParams?.name as string;
   return (
     <PrimaryContainer
       title='Resources'
@@ -25,13 +28,13 @@ const FolderPage = async () => {
       </div>
       <div className='grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8'>
         {
-          folderData.map((item) => {
+          folderData.files?.map((item) => {
             return (
               <FileCard
-                key={item.id}
-                fileId={item.id}
-                fileName={item.name}
-                mimeType={item.mimeType}
+                key={item.id as string}
+                fileId={item.id as string}
+                fileName={item.name as string}
+                mimeType={item.mimeType as string}
               />
             );
           })
