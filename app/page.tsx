@@ -13,7 +13,7 @@ export default async function Home() {
   const routineData = getRoutines();
 
   const [events, routines] = await Promise.all([eventData, routineData]);
-  const time = moment().format('DD MMM, YYYY');
+  const time = moment().format('hh:mm A');
   return (
     <PageContainer>
       <div className="grid grid-cols-12 pr-4 md:pr-0">
