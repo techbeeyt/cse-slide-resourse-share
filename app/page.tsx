@@ -26,7 +26,7 @@ export default async function Home() {
             divider
           >
             <UpcomingEventList events={events} />
-            <div className="bg-transparent w-full h-8"></div>
+            <div className="bg-transparent w-full h-2"></div>
             <TodaysClassList routines={routines} />
           </PrimaryContainer>
         </div>

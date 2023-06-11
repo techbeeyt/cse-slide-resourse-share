@@ -33,3 +33,10 @@
   height: 100%;
   object-fit: cover;
 }
+
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 0.5rem !important;
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+}

@@ -28,16 +28,16 @@ const TodaysClass: React.FC<TodaysClassProps> = ({
       gap-1 w-full md:max-w-[350px]
       ${poppins.className}
     `}>
-      <div className='text-black/90 flex justify-center items-center gap-2'>
+      <div className='text-purple-900 flex justify-center items-center gap-2'>
         <span className='font-normal md:font-semibold'>{moment(data.start_time).format('hh:mm A')}</span>
         <span className='font-normal md:font-semibold'>-</span>
         <span className='font-normal md:font-semibold'>{moment(data.end_time).format('hh:mm A')}</span>
       </div>
-      <div className='h-px w-full bg-purple-600'></div>
+      <div className='h-px w-full bg-purple-600/60'></div>
       <div className='w-full'>
-        <h2 className='text-white/50 font-normal md:font-semibold'>{data.course_title}</h2>
-        <div className='text-white/50 text-sm md:text-normal'>Teacher: {data.teacher_name}</div>
-        <div className='text-white/50 text-sm md:text-normal'>Room: {data.room_no}</div>
+        <h2 className='text-purple-900 font-normal md:font-semibold'>{data.course_title}</h2>
+        <div className='text-purple-900 text-sm md:text-normal'>Teacher: {data.teacher_name}</div>
+        <div className='text-purple-900 text-sm md:text-normal'>Room: {data.room_no}</div>
       </div>
     </div>
   )

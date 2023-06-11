@@ -36,7 +36,9 @@ const UpcomingEventList: React.FC<UpcomingEventListProps> = ({
     >
       <Swiper
         modules={[Pagination]}
-        pagination={{ clickable: true }}
+        pagination={{ 
+          clickable: true,
+         }}
         className='mySwiper'
         breakpoints={
           {
@@ -60,6 +62,7 @@ const UpcomingEventList: React.FC<UpcomingEventListProps> = ({
             return (
               <SwiperSlide
                 key={index}
+
               >
                 <UpcomingEvent
                   data={item}
