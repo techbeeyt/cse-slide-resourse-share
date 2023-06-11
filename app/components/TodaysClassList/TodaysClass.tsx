@@ -35,9 +35,9 @@ const TodaysClass: React.FC<TodaysClassProps> = ({
       </div>
       <div className='h-px w-full bg-purple-600'></div>
       <div className='w-full'>
-        <h2 className='text-purple-900 font-normal md:font-semibold'>{data.course_title}</h2>
-        <div className='text-purple-900 text-sm md:text-normal'>Teacher: {data.teacher_name}</div>
-        <div className='text-white/60 text-sm md:text-normal'>Room: {data.room_no}</div>
+        <h2 className='text-white/50 font-normal md:font-semibold'>{data.course_title}</h2>
+        <div className='text-white/50 text-sm md:text-normal'>Teacher: {data.teacher_name}</div>
+        <div className='text-white/50 text-sm md:text-normal'>Room: {data.room_no}</div>
       </div>
     </div>
   )
