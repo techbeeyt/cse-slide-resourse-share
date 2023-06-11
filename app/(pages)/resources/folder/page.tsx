@@ -1,5 +1,4 @@
 import { getFolder } from '@/app/actions/getFolderById';
-import { useSearchParams } from 'next/navigation';
 import React from 'react';
 import PrimaryContainer from '@/app/components/container/PrimaryContainer';
 import Breadcumb from '@/app/components/breadcumb/Breadcumb';
@@ -26,7 +25,7 @@ const FolderPage = async ({
           leaf={name}
         />
       </div>
-      <div className='grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8'>
+      <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 md:gap-3'>
         {
           folderData.files?.map((item) => {
             return (

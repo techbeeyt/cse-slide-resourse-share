@@ -14,7 +14,7 @@ const Resources = async () => {
       <PrimaryContainer
         title='Recently Opened Files'
       > 
-        <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7'>
+        <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 md:gap-3'>
           {
             recentOpenedData.files?.map((item) => {
               return (
@@ -38,7 +38,7 @@ const Resources = async () => {
             leaf="Root"
           />
         </div>
-        <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7'>
+        <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-2 md:gap-x-3'>
           {
             rootData.files?.map((item) => {
               return (
