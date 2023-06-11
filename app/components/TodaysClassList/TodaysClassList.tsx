@@ -18,7 +18,7 @@ const TodaysClassList: React.FC<TodaysClassListProps> = ({
         actionLabel="See all"
       >
         <div className='flex justify-center md:justify-start items-center w-full h-full'>
-          <div className='text-neutral-400 italic'>No class for today</div>
+          <div className='text-neutral-400 italic'>Chill! No class for today.</div>
         </div>
       </ContentContainer>
     );
@@ -31,7 +31,8 @@ const TodaysClassList: React.FC<TodaysClassListProps> = ({
       <div
         className='
           grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4
-          gap-4
+          gap-2
+          md:gap-4
           w-full
         '
       >
