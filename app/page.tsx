@@ -14,6 +14,7 @@ export default async function Home() {
 
   const [events, routines] = await Promise.all([eventData, routineData]);
   const time = moment().format('hh:mm A');
+
   return (
     <PageContainer>
       <div className="grid grid-cols-12 pr-4 md:pr-0">
@@ -32,11 +33,11 @@ export default async function Home() {
 
         <div className="col-span-0 md:col-span-3 hidden md:block p-4 relative">
           <PrimaryContainer
-            title="Messages"
+            title="Notifications"
             divider
             subtitle="See all"
           >
-            Here you can do chat..
+            Notifications will be listed here..
           </PrimaryContainer>
         </div>
       </div>
