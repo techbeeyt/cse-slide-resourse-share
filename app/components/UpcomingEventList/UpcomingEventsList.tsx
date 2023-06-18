@@ -38,6 +38,7 @@ const UpcomingEventList: React.FC<UpcomingEventListProps> = ({
         modules={[Pagination]}
         pagination={{ 
           clickable: true,
+          
          }}
         className='mySwiper'
         breakpoints={

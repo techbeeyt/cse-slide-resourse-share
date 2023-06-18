@@ -40,3 +40,11 @@
   padding-bottom: 0px !important;
   margin-bottom: 0px !important;
 }
+
+table.table-type-1 {
+  @apply rounded-md w-full border border-collapse border-gray-600
+}
+table.table-type-1 th,
+table.table-type-1 td {
+  @apply border border-collapse border-gray-600 px-3 py-2 text-center text-blue-300/70
+}
