@@ -9,6 +9,8 @@ import { redirect } from 'next/navigation';
 import AddNewEventModal from './components/modals/AddNewEventModal';
 import AddNewRoutineModal from './components/modals/AddNewRoutineModal';
 import EventDetailsModal from './components/modals/EventDetailsModal';
+import EditEventModal from './components/modals/EditEventModal';
+import ToasterProvider from './providers/ToastProvider';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -43,8 +45,10 @@ export default async function RootLayout({
             <Leftbar />
             <SearchModal />
             <AddNewEventModal />
+            <EditEventModal />
             <AddNewRoutineModal />
-            <EventDetailsModal /> 
+            <EventDetailsModal />
+            <ToasterProvider />
             <main>
               {children}
             </main>

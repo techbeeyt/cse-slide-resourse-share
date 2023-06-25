@@ -6,8 +6,9 @@ import useEventDetailsModal from '@/app/hooks/useEventDetailsModal';
 import PrimaryContainer from '../container/PrimaryContainer';
 import useSWR from 'swr';
 import moment from 'moment'
+import fetcher from '@/app/libs/fetcherFunc';
 
-const fetcher = (url: string) => fetch(url, { cache: 'no-store' }).then((res) => res.json());
+
 
 const EventDetailsModal = () => {
   const modal = useEventDetailsModal();
@@ -27,7 +28,7 @@ const EventDetailsModal = () => {
     >
       <div className='bg-secondary rounded-xl md:rounded-3xl w-[90vw] md:w-[500px] lg:w-[700px] -translate-y-[100px]'>
         <PrimaryContainer
-            title={data?.title as string}
+            title={data?.title}
             subtitle='Close'
             subtitleClickAction={modal.onClose}
           >

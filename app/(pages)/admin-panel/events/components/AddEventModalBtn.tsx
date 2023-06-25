@@ -1,18 +1,29 @@
 "use client"
 
 import Button from '@/app/components/Button'
-import useAddNewEventModal from '@/app/hooks/useAddNewEventModal'
+import useAddNewEventModal from '@/app/hooks/useAddNewEventModal';
+import useMutatorSWR from '@/app/hooks/useMutatorSWR';
 import React from 'react'
-import { BsCalendarEvent } from 'react-icons/bs'
+import { BsCalendarEvent } from 'react-icons/bs';
 
-const AddEventModalBtn = () => {
+interface AddEventModalBtnProps {
+  mutator: any;
+}
+
+const AddEventModalBtn:React.FC<AddEventModalBtnProps> = ({
+  mutator
+}) => {
   const addEventModal = useAddNewEventModal();
+  const MutatorSWR = useMutatorSWR();
   return (
     <Button
       icon={BsCalendarEvent}
       iconSize={20}
       label="Add New Event"
-      onAction={addEventModal.onOpen}
+      onAction={() => {
+        MutatorSWR.setMutator(mutator);
+        addEventModal.onOpen();
+      }}
     />
   )
 }

@@ -1,50 +1,68 @@
+"use client";
+
 import GoBack from '@/app/components/GoBack';
 import React from 'react'
 import PrimaryContainer from '@/app/components/container/PrimaryContainer';
 import AddEventModalBtn from './components/AddEventModalBtn';
-import { getEvents } from '@/app/actions/getEvents';
+import useSWR from 'swr';
 import moment from 'moment';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import ActionButtonGroup from './components/ActionButtonGroup';
+import fetcher from '@/app/libs/fetcherFunc';
+import { Prisma } from '@prisma/client';
 
-const EventsPage = async () => {
-  const events = await getEvents();
+
+
+const EventsPage = () => {
+  const { data, error, isLoading, mutate } = useSWR("/api/events", fetcher);
   return (
     <div className="p-4">
       <div className="flex justify-between items-center gap-3 mb-4">
         <GoBack label="Go Back" />
-        <AddEventModalBtn />
+        <AddEventModalBtn mutator={mutate} />
       </div>
-
       <PrimaryContainer
         title='Events'
       >
-        <div>
-          <table className="table-type-1">
-            <thead>
-              <tr>
-                <th>Event Name</th>
-                <th>Event Date</th>
-                <th>Event Time</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {
-                events.map((event, index) => (
-                  <tr key={index}>
-                    <td>{event.title}</td>
-                    <td>{moment(event.date).format("DD-MM-YYYY")}</td>
-                    <td>{moment(event.time).format("HH:MM a")}</td>
-                    <td>
-                      <button className="btn btn-sm btn-primary">Edit</button>
-                      <button className="btn btn-sm btn-danger">Delete</button>
-                    </td>
-                  </tr>
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-primary rounded-md">
+              <TableHead className="whitespace-nowrap rounded-t">Event Name</TableHead>
+              <TableHead className="whitespace-nowrap">Event Date</TableHead>
+              <TableHead className="whitespace-nowrap">Event Time</TableHead>
+              <TableHead className="whitespace-nowrap">Description</TableHead>
+              <TableHead className="whitespace-nowrap text-center">Action</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {
+              isLoading ? (
+                <TableRow>
+                  <TableCell>Loading...</TableCell>
+                </TableRow>
+              ) : (
+                data.map((event: Prisma.EventCreateInput, index: number) => (
+                  <TableRow key={index}>
+                    <TableCell className="whitespace-nowrap">{event.title}</TableCell>
+                    <TableCell className="whitespace-nowrap">{moment(event.date).format("DD-MM-YYYY")}</TableCell>
+                    <TableCell className="whitespace-nowrap">{moment(event.time).format("HH:MM a")}</TableCell>
+                    <TableCell className="w-auto">{event.description}</TableCell>
+                    <TableCell className="whitespace-nowrap">
+                      <ActionButtonGroup id={event.id as string} mutator={mutate as any} />
+                    </TableCell>
+                  </TableRow>
                 ))
-              }
-            </tbody>
-          </table>
-        </div>
+              )
+            }
+          </TableBody>
+        </Table>
       </PrimaryContainer>
     </div>
   )

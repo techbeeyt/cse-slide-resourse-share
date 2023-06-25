@@ -13,8 +13,6 @@ export async function POST(
 
   const body = await request.json();
 
-  console.log(body);
-
   const {
     title,
     description,
@@ -40,7 +38,7 @@ export async function POST(
   console.log(event);
 
   return NextResponse.json({
-    status: true,
+    success: true,
     message: "Event added successfully"
   })
 

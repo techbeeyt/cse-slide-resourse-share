@@ -2,28 +2,25 @@
 
 import React from 'react'
 import ModalContainer from '../container/ModalContainer';
-import useAddNewEventModal from '@/app/hooks/useAddNewEventModal';
 import axios from 'axios';
 import PrimaryContainer from '../container/PrimaryContainer';
 import Button from '@/app/components/Button';
 import TextArea from '../inputs/TextArea';
 import Input from '@/app/components/inputs/Input';
-import useMutatorSWR from '@/app/hooks/useMutatorSWR';
 import {
   FieldValues,
   SubmitHandler,
   useForm
 } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
+import useEditEventModal from '@/app/hooks/useEditEventModal';
 
-const AddNewEventModal = () => {
+const EditEventModal = () => {
   const {
     register,
     handleSubmit,
     formState: {
       errors,
-    },
-    reset
+    }
   } = useForm<FieldValues>({
     defaultValues: {
       title: '',
@@ -32,23 +29,13 @@ const AddNewEventModal = () => {
       time: ''
     }
   })
-  const MutatorSWR = useMutatorSWR();
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
     axios.post("/api/events/add", data)
-      .then((response) => {
-        if(response.data.success){
-          toast.success(response.data.message);
-          MutatorSWR.mutator();
-          modal.onClose();
-          reset();
-        } else {
-          toast.error(response.data.message);
-        }
-      })
+      .then(() => alert("Added new event"))
   }
-  const modal = useAddNewEventModal();
+  const modal = useEditEventModal();
   if (!modal.isOpen) return null; 
   return (
     <ModalContainer
@@ -116,4 +103,4 @@ const AddNewEventModal = () => {
   )
 }
 
-export default AddNewEventModal
+export default EditEventModal
