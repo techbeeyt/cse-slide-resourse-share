@@ -1,5 +1,7 @@
 "use client";
 
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
 import GoBack from '@/app/components/GoBack';
 import React from 'react'
 import PrimaryContainer from '@/app/components/container/PrimaryContainer';
