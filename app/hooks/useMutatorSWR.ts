@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 interface MutatorSWRStore {
   mutator: any;
-  setMutator: () => void;
+  setMutator: (m: any) => void;
   removeMutator: () => void;
 }
 

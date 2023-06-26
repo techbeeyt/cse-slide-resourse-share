@@ -41,6 +41,7 @@ const AddNewEventModal = () => {
         if(response.data.success){
           toast.success(response.data.message);
           MutatorSWR.mutator();
+          MutatorSWR.removeMutator();
           modal.onClose();
           reset();
         } else {
