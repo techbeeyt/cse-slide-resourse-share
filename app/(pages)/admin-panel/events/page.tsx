@@ -19,11 +19,12 @@ import {
 import ActionButtonGroup from './components/ActionButtonGroup';
 import fetcher from '@/app/libs/fetcherFunc';
 import { Prisma } from '@prisma/client';
+import fetcherPOST from '@/app/libs/fetcherFuncPOST';
 
 
 
 const EventsPage = () => {
-  const { data, error, isLoading, mutate } = useSWR("/api/events", fetcher);
+  const { data, error, isLoading, mutate } = useSWR("/api/events", fetcherPOST);
   return (
     <div className="p-4">
       <div className="flex justify-between items-center gap-3 mb-4">

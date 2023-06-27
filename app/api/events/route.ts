@@ -1,15 +1,10 @@
-import prisma from "@/app/libs/prismadb";
+import { getEvents } from "@/app/actions/getEvents";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
-  return NextResponse.json(await prisma.event.findMany({
-    orderBy: {
-      date: 'asc'
-    },
-    where: {
-      date: {
-        gte: new Date()
-      }
-    }
-  }));
+export async function POST(request: Request) {
+  try {
+    return NextResponse.json(await getEvents());
+  } catch (error: any) {
+    return NextResponse.error();
+  }
 }
