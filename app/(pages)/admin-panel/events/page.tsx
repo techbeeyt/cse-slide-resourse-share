@@ -17,7 +17,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import ActionButtonGroup from './components/ActionButtonGroup';
-import fetcher from '@/app/libs/fetcherFunc';
 import { Prisma } from '@prisma/client';
 import fetcherPOST from '@/app/libs/fetcherFuncPOST';
 

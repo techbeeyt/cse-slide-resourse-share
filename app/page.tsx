@@ -5,6 +5,7 @@ import TodaysClassList from "./components/TodaysClassList/TodaysClassList";
 import UpcomingEventList from "./components/UpcomingEventList/UpcomingEventsList";
 import PageContainer from "./components/container/PageContainer";
 import PrimaryContainer from "./components/container/PrimaryContainer";
+import NotificationPermission from './components/NotificationPermission';
 
 export const dynamic = 'force-dynamic';
 
@@ -37,7 +38,7 @@ export default async function Home() {
             divider
             subtitle="See all"
           >
-            Notifications will be listed here..
+            <NotificationPermission />
           </PrimaryContainer>
         </div>
       </div>

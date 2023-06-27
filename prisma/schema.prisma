@@ -85,3 +85,9 @@ model ClassRoutine {
   room_no       String
   teacher_name  String
 }
+
+model NotificationDevices {
+  id            String     @id @default(cuid()) @map("_id")
+  deviceToken   String
+  status        Boolean
+}

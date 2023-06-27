@@ -42,6 +42,10 @@
 }
 
 
+button.disabled {
+  @apply opacity-60 cursor-not-allowed;
+}
+
 @layer base {
   :root {
     --background: 224 71% 4%;

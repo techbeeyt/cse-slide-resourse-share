@@ -11,6 +11,7 @@ import AddNewRoutineModal from './components/modals/AddNewRoutineModal';
 import EventDetailsModal from './components/modals/EventDetailsModal';
 import EditEventModal from './components/modals/EditEventModal';
 import ToasterProvider from './providers/ToastProvider';
+import ClientGlobalStates from './components/ClientGlobalStates';
 
 const inter = Inter({ subsets: ['latin'] })
 
