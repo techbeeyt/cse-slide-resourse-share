@@ -11,13 +11,14 @@ import AddNewRoutineModal from './components/modals/AddNewRoutineModal';
 import EventDetailsModal from './components/modals/EventDetailsModal';
 import EditEventModal from './components/modals/EditEventModal';
 import ToasterProvider from './providers/ToastProvider';
-import ClientGlobalStates from './components/ClientGlobalStates';
+import { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'CSE 19 B',
   description: 'An app to manage resources by montasir mahmud',
+  manifest: '/manifest.json',
 }
 
 export const style = {

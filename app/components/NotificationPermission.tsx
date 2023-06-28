@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import firebase, { messaging } from '@/app/utils/firebase';
-import { getToken } from 'firebase/messaging';
+import { firebaseCloudMessaging } from '@/app/utils/webpush';
+import firebase from 'firebase/app';
 
 const NotificationPermission = () => {
   const [showBtn, setShowBtn] = useState(false);
@@ -19,20 +19,33 @@ const NotificationPermission = () => {
     })
   }
 
-
   useEffect(() => {
-    getToken(messaging, { vapidKey: process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY }).then((currentToken) => {
-      if (currentToken) {
-        alert(currentToken);
-      } else {
-        // Show permission request UI
-        console.log('No registration token available. Request permission to generate one.');
-        getPermission();
+    setToken();
+    async function setToken() {
+      try {
+        const token = await firebaseCloudMessaging.init();
+        if (token) {
+          getMessage();
+        }
+      } catch (error) {
+        console.log(error);
       }
-    }).catch((err) => {
-      console.log('An error occurred while retrieving token. ', err);
-    });
-  }, [permission]);
+    }
+    function getMessage() {
+      // @ts-ignore
+      const messaging = firebase.messaging();
+      console.log({ messaging });
+      // @ts-ignore
+      messaging.onMessage((message) => {
+        const { title, body } = JSON.parse(message.data.notification);
+        var options = {
+          body,
+        };
+        // @ts-ignore
+        self.registration.showNotification(title, options);
+      });
+    }
+  });
 
   if(showBtn) {
     return (
@@ -45,3 +58,4 @@ const NotificationPermission = () => {
 }
 
 export default NotificationPermission
+
