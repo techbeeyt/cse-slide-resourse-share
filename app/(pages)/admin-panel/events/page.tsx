@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic'
 import GoBack from '@/app/components/GoBack';
 import React from 'react'
 import PrimaryContainer from '@/app/components/container/PrimaryContainer';
-import AddEventModalBtn from './components/AddEventModalBtn';
+import AddEventModalBtn from '../routines/components/AddEventModalBtn';
 import useSWR from 'swr';
 import moment from 'moment';
 import {
@@ -16,7 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import ActionButtonGroup from './components/ActionButtonGroup';
+import ActionButtonGroup from '../routines/components/ActionButtonGroup';
 import { Prisma } from '@prisma/client';
 import fetcherPOST from '@/app/libs/fetcherFuncPOST';
 

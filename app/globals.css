@@ -42,7 +42,8 @@
 }
 
 
-button.disabled {
+button[disabled],
+button[disabled="true"], {
   @apply opacity-60 cursor-not-allowed;
 }
 

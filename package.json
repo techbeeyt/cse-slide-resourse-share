@@ -10,6 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@imbios/next-pwa": "^1.1.1",
     "@next-auth/prisma-adapter": "^1.0.6",
     "@prisma/client": "^4.15.0",
     "@types/firebase": "^3.2.1",
@@ -31,7 +32,6 @@
     "moment-timezone": "^0.5.43",
     "next": "13.4.3",
     "next-auth": "^4.22.1",
-    "next-pwa": "^5.6.0",
     "postcss": "8.4.23",
     "prisma": "^4.15.0",
     "query-string": "^8.1.0",

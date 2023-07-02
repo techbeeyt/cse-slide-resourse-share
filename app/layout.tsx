@@ -18,8 +18,30 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'CSE 19 B',
   description: 'An app to manage resources by montasir mahmud',
-  manifest: '/manifest.json',
-}
+  twitter: {
+    card: "summary_large_image",
+    creator: "@imamdev_",
+    images: "https://example.com/og.png",
+  },
+  applicationName: "CSE 19b Resource Manager",
+  appleWebApp: {
+    capable: true,
+    title: "CSE 19b Resource Manager",
+    statusBarStyle: "default",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  themeColor: "#FFFFFF",
+  viewport:
+    "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
+  manifest: "/manifest.json",
+  icons: [
+    { rel: "apple-touch-icon", url: "/icons/apple-touch-icon.png" },
+    { rel: "shortcut icon", url: "/favicon.ico" },
+  ],
+  keywords: ["nextjs", "pwa", "next-pwa"],
+};
 
 export const style = {
   container: `bg-gray-900 h-screen overflow-hidden relative`,
